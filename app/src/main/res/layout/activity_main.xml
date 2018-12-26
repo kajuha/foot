@@ -23,7 +23,8 @@
                 android:textColor="#ffffff"
                 android:textAlignment="center"
                 android:textSize="30dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:id="@+id/tv_subject"/>
         </LinearLayout>
 
         <LinearLayout
@@ -49,18 +50,19 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1"
-                android:background="@drawable/border">
+                android:background="@drawable/border_info">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="횟수"
+                    android:text="횟수(Steps)"
                     android:textAlignment="center"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="3657"
+                    android:text="-"
                     android:textSize="50sp"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:id="@+id/tv_count"/>
             </LinearLayout>
 
             <LinearLayout
@@ -68,18 +70,19 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1"
-                android:background="@drawable/border">
+                android:background="@drawable/border_info">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="칼로리"
+                    android:text="칼로리(Kcal)"
                     android:textAlignment="center"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="300"
+                    android:text="-"
                     android:textSize="50sp"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:id="@+id/tv_calories"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -92,7 +95,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border"
+                android:background="@drawable/button_selector"
                 android:layout_weight="1"
                 android:id="@+id/bt_day"
                 android:text="일" />
@@ -100,14 +103,14 @@
                 android:text="주"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border"
+                android:background="@drawable/button_selector"
                 android:layout_weight="1"
                 android:id="@+id/bt_week"/>
             <Button
                 android:text="월"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border"
+                android:background="@drawable/button_selector"
                 android:layout_weight="1"
                 android:id="@+id/bt_month"/>
         </LinearLayout>

@@ -46,6 +46,6 @@ public class IntroActivity extends AppCompatActivity {
 
         handler = new Handler();
         // 지연후 메인액티비티 실행
-        handler.postDelayed(runnable, 0);
+        handler.postDelayed(runnable, 2000);
     }
 }
