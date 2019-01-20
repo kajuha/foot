@@ -39,7 +39,7 @@ public class IntroActivity extends AppCompatActivity {
         runnable = new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(IntroActivity.this, MainActivity.class));
+                startActivity(new Intent(IntroActivity.this, MenuActivity.class));
                 finish();
             }
         };

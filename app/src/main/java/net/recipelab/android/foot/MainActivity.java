@@ -159,8 +159,13 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
-        // DB 생성
-        if (false) {
+        // DB에 데이터가 없으면 생성
+        int dbCount = 0;
+        Cursor cs = sqliteDatabase.rawQuery("select * from foot_count order by id desc limit 7;", null);
+        while(cs.moveToNext()) {
+            dbCount++;
+        }
+        if (dbCount == 0) {
             createDB(sqliteDatabase);
         }
 
@@ -211,14 +216,22 @@ public class MainActivity extends AppCompatActivity {
 
         // UI 컨트롤 갱신
         dateType = DateType.DAY;
-        tvSubject = (TextView)findViewById(R.id.tv_subject);
-        tvSubject.setText(labels_arr.get(labels_arr.size()-1));
-        int count = history_day.get(history_day.size()-1)._count;
-        tvCount = (TextView)findViewById(R.id.tv_count);
-        tvCount.setText("" + count);
-        tvCalories = (TextView)findViewById(R.id.tv_calories);
-        int calories = (int)(count * 0.04);
-        tvCalories.setText("" + calories);
+        tvSubject = (TextView) findViewById(R.id.tv_subject);
+        tvCount = (TextView) findViewById(R.id.tv_count);
+        tvCalories = (TextView) findViewById(R.id.tv_calories);
+        if (history_day.size() != 0) {
+            tvSubject.setText(labels_arr.get(labels_arr.size() - 1));
+            int count = history_day.get(history_day.size() - 1)._count;
+            tvCount.setText("" + count);
+            int calories = (int) (count * 0.04);
+            tvCalories.setText("" + calories);
+        } else {
+            tvSubject.setText("Today");
+            int count = 0;
+            tvCount.setText("" + count);
+            int calories = 0;
+            tvCalories.setText("" + calories);
+        }
 
         // 축관련 표시정보 삭제
         // 차트 정보
@@ -255,11 +268,19 @@ public class MainActivity extends AppCompatActivity {
             public void onValueSelected(Entry e, Highlight h) {
                 int idx = (int)e.getX();
                 if (dateType == DateType.DAY) {
-                    tvSubject.setText(labels_arr.get(idx));
-                    int count = history_day.get(idx)._count;
-                    tvCount.setText("" + count);
-                    int calories = (int)(count * 0.04);
-                    tvCalories.setText("" + calories);
+                    if (history_day.size() != 0) {
+                        tvSubject.setText(labels_arr.get(idx));
+                        int count = history_day.get(idx)._count;
+                        tvCount.setText("" + count);
+                        int calories = (int)(count * 0.04);
+                        tvCalories.setText("" + calories);
+                    } else {
+                        tvSubject.setText("Today");
+                        int count = 0;
+                        tvCount.setText("" + count);
+                        int calories = 0;
+                        tvCalories.setText("" + calories);
+                    }
                 }
             }
 
